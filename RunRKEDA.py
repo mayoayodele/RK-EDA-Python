@@ -1,6 +1,6 @@
 
 from RKEDA import *
-
+import sys
 
 populationSize = int(sys.argv[0]) 
 path = sys.argv[1]

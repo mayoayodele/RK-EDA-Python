@@ -5,7 +5,7 @@ from RKEDA import *
 
 populationSize = 100
 path = "./Taillard_instances/"
-probName = "tai50_20_9.fsp"
+probName = "tai50_20_0.fsp"
 FEs = 50000
 truncSize = 20
 elitism = False

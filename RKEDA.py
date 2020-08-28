@@ -4,6 +4,7 @@ from Representation import Orderings as Od
 from Utils import EDAUtils as Utils
 import pandas as pd
 import copy 
+import time
 
 class RKEDA:
 
@@ -37,7 +38,7 @@ class RKEDA:
 
         results = []
         
-
+        start_time = time.time()
         for i in range(populationSize):
             perm = rk.RK(Od.Orderings.generateRandomRK(probSize))
             perm.setPermutation(Od.Orderings.randomKeyToAL(perm.copyGene()))
@@ -95,10 +96,12 @@ class RKEDA:
                 
                 best = bestTemp.copyOf()
                 countToBest = count
+                end_time = time.time()
                 res = {'problem Name': self.probName,
                         'Permutation': best.permutation,
                         'Fitness': best.getFitness(),
-                        'Fitness Evaluations': countToBest
+                        'Fitness Evaluations': countToBest,
+                        'Execution Time': end_time - start_time
                         }
                 results.append(copy.deepcopy(res))
        

@@ -5,9 +5,8 @@ import os
 
 
 save_as = "./src/run/fsp50.sh"
-problemSize = 20
 numberOfruns = 20
-stdevs = [0.001, 0.002, 0.003]
+stdevs = [0.0025, 0.005]
 elit = [0]
 path =  "./Taillard_instances/"
 resultsPath = "./Results/"
@@ -30,19 +29,19 @@ problemNames = {"20": ["tai20_5_0.fsp", "tai20_5_1.fsp", "tai20_5_2.fsp", "tai20
             "tai100_10_0.fsp", "tai100_10_1.fsp", "tai100_10_2.fsp", "tai100_10_3.fsp", "tai100_10_4.fsp",
             "tai100_10_5.fsp", "tai100_10_6.fsp", "tai100_10_7.fsp", "tai100_10_8.fsp", "tai100_10_9.fsp",
             "tai100_20_0.fsp", "tai100_20_1.fsp", "tai100_20_2.fsp", "tai100_20_3.fsp", "tai100_20_4.fsp",
-            "tai100_20_5.fsp", "tai100_20_6.fsp", "tai100_20_7.fsp", "tai100_20_8.fsp", "tai100_20_9.fsp"],
-           "200":["tai200_10_0.fsp", "tai200_10_1.fsp", "tai200_10_2.fsp", "tai200_10_3.fsp", "tai200_10_4.fsp",
-            "tai200_10_5.fsp", "tai200_10_6.fsp", "tai200_10_7.fsp", "tai200_10_8.fsp", "tai200_10_9.fsp",
-            "tai200_20_0.fsp", "tai200_20_1.fsp", "tai200_20_2.fsp", "tai200_20_3.fsp", "tai200_20_4.fsp",
-            "tai200_20_5.fsp", "tai200_20_6.fsp", "tai200_20_7.fsp", "tai200_20_8.fsp", "tai200_20_9.fsp"],
-           "500":["tai500_20_0.fsp", "tai500_20_1.fsp", "tai500_20_2.fsp", "tai500_20_3.fsp", "tai500_20_4.fsp",
-            "tai500_20_5.fsp", "tai500_20_6.fsp", "tai500_20_7.fsp", "tai500_20_8.fsp", "tai500_20_9.fsp"]
+            "tai100_20_5.fsp", "tai100_20_6.fsp", "tai100_20_7.fsp", "tai100_20_8.fsp", "tai100_20_9.fsp"]
+        #   , "200":["tai200_10_0.fsp", "tai200_10_1.fsp", "tai200_10_2.fsp", "tai200_10_3.fsp", "tai200_10_4.fsp",
+        #     "tai200_10_5.fsp", "tai200_10_6.fsp", "tai200_10_7.fsp", "tai200_10_8.fsp", "tai200_10_9.fsp",
+        #     "tai200_20_0.fsp", "tai200_20_1.fsp", "tai200_20_2.fsp", "tai200_20_3.fsp", "tai200_20_4.fsp",
+        #     "tai200_20_5.fsp", "tai200_20_6.fsp", "tai200_20_7.fsp", "tai200_20_8.fsp", "tai200_20_9.fsp"],
+        #    "500":["tai500_20_0.fsp", "tai500_20_1.fsp", "tai500_20_2.fsp", "tai500_20_3.fsp", "tai500_20_4.fsp",
+        #     "tai500_20_5.fsp", "tai500_20_6.fsp", "tai500_20_7.fsp", "tai500_20_8.fsp", "tai500_20_9.fsp"]
            
            } 
 count = 0
 for problemSize in problemNames.keys():
     for probName in problemNames[problemSize]:
-        popSizes = [ int(problemSize) * 10, int(problemSize) * 30, int(problemSize) * 50]
+        popSizes = [ int(problemSize) * 1, int(problemSize) * 2]
         if ("tai20_5" in probName.replace("-", "_")):
             FEs = 182224100
         elif ("tai20_10" in  probName.replace("-", "_")):

@@ -34,7 +34,6 @@ class RKEDA:
         population = []
         temp_population = []
         count = 0
-        countToBest = 0
 
         results = []
         
@@ -51,6 +50,16 @@ class RKEDA:
         best = Utils.EDAUtils.getBestSolutionMin(population).copyOf()
         matrix = copy.deepcopy(Utils.EDAUtils.getPMTruncationSelection(population, truncSize) )
       
+        end_time = time.time()
+        res = {'problem Name': self.probName,
+                'Permutation': best.permutation,
+                'Fitness': best.getFitness(),
+                'Fitness Evaluations': count,
+                'Execution Time': end_time - start_time
+                }
+                
+        results.append(copy.deepcopy(res))
+       
 
         gens = float (FEs/populationSize)
         weight = 1
@@ -58,7 +67,7 @@ class RKEDA:
 
         j = 0
 
-        while(count < FEs):
+        for gen in range(int(gens)):
             isfirst = True
             for i in range(populationSize):
                 child = None
@@ -95,12 +104,11 @@ class RKEDA:
             if (bestTemp.fitness < best.fitness):
                 
                 best = bestTemp.copyOf()
-                countToBest = count
                 end_time = time.time()
                 res = {'problem Name': self.probName,
                         'Permutation': best.permutation,
                         'Fitness': best.getFitness(),
-                        'Fitness Evaluations': countToBest,
+                        'Fitness Evaluations': count,
                         'Execution Time': end_time - start_time
                         }
                 results.append(copy.deepcopy(res))

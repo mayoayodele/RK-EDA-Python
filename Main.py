@@ -3,16 +3,16 @@ from RKEDA import *
 
 
 
-populationSize = 100
+populationSize = 200
 path = "./Taillard_instances/"
-probName = "tai50_20_0.fsp"
-FEs = 50000
+probName = "tai20_5_0.fsp"
+FEs = 182224100
 truncSize = 20
 elitism = False
-stdev = 0.3
+stdev = 0.387
 
 resultsPath = "./Results/"
-saveAs = "tai50_20_9P500T50V0.1874496528878277e0run0.xlsx"
+saveAs = "tai20_5_0P200T20V0.387E0run0.xlsx"
 
 
 

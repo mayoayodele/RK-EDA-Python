@@ -29,7 +29,7 @@ class RKEDA:
         elitism = self.elitism
         permProb = PFSP.PFSPTotalFlowTime(path)
         probSize = permProb.getProblemSize()
-        optimal = permProb.getOptimalFitness()
+        #optimal = permProb.getOptimalFitness()
 
         population = []
         temp_population = []
@@ -100,9 +100,9 @@ class RKEDA:
             if (len(population) == populationSize):
                 matrix = copy.deepcopy(Utils.EDAUtils.getPMTruncationSelection(population, truncSize))
             bestTemp = Utils.EDAUtils.getBestSolutionMin(population)
-
+            
             if (bestTemp.fitness < best.fitness):
-                
+                print(str(gen) + ", Fitness: " +  str(bestTemp.fitness)) 
                 best = bestTemp.copyOf()
                 end_time = time.time()
                 res = {'problem Name': self.probName,

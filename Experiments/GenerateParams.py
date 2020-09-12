@@ -6,30 +6,37 @@ import os
 
 save_as = "./src/run/fsp50.sh"
 numberOfruns = 20
-stdevs = [0.0025, 0.005]
+stdevs = [0.05]
+fe_frac = 0.2
 elit = [0]
 path =  "./Taillard_instances/"
 resultsPath = "./Results/"
 parameters_to_print = "X_PARAM=("
 
-problemNames = {"20": ["tai20_5_0.fsp", "tai20_5_1.fsp", "tai20_5_2.fsp", "tai20_5_3.fsp", "tai20_5_4.fsp",
-           "tai20_5_5.fsp", "tai20_5_6.fsp", "tai20_5_7.fsp", "tai20_5_8.fsp", "tai20_5_9.fsp",
-           "tai20_10_0.fsp", "tai20_10_1.fsp", "tai20_10_2.fsp", "tai20_10_3.fsp", "tai20_10_4.fsp",
-           "tai20_10_5.fsp", "tai20_10_6.fsp", "tai20_10_7.fsp", "tai20_10_8.fsp", "tai20_10_9.fsp",
-           "tai20_20_0.fsp", "tai20_20_1.fsp", "tai20_20_2.fsp", "tai20_20_3.fsp", "tai20_20_4.fsp",
-           "tai20_20_5.fsp", "tai20_20_6.fsp", "tai20_20_7.fsp", "tai20_20_8.fsp", "tai20_20_9.fsp"],
-           "50": ["tai50_5_0.fsp", "tai50_5_1.fsp", "tai50_5_2.fsp", "tai50_5_3.fsp", "tai50_5_4.fsp",
-           "tai50_5_5.fsp", "tai50_5_6.fsp", "tai50_5_7.fsp", "tai50_5_8.fsp", "tai50_5_9.fsp",
-           "tai50_10_0.fsp", "tai50_10_1.fsp", "tai50_10_2.fsp", "tai50_10_3.fsp", "tai50_10_4.fsp",
-           "tai50_10_5.fsp", "tai50_10_6.fsp", "tai50_10_7.fsp", "tai50_10_8.fsp", "tai50_10_9.fsp",
-           "tai50_20_0.fsp", "tai50_20_1.fsp", "tai50_20_2.fsp", "tai50_20_3.fsp", "tai50_20_4.fsp",
-           "tai50_20_5.fsp", "tai50_20_6.fsp", "tai50_20_7.fsp", "tai50_20_8.fsp", "tai50_20_9.fsp"],
-           "100": ["tai100_5_0.fsp", "tai100_5_1.fsp", "tai100_5_2.fsp", "tai100_5_3.fsp", "tai100_5_4.fsp",
-            "tai100_5_5.fsp", "tai100_5_6.fsp", "tai100_5_7.fsp", "tai100_5_8.fsp", "tai100_5_9.fsp",
-            "tai100_10_0.fsp", "tai100_10_1.fsp", "tai100_10_2.fsp", "tai100_10_3.fsp", "tai100_10_4.fsp",
-            "tai100_10_5.fsp", "tai100_10_6.fsp", "tai100_10_7.fsp", "tai100_10_8.fsp", "tai100_10_9.fsp",
-            "tai100_20_0.fsp", "tai100_20_1.fsp", "tai100_20_2.fsp", "tai100_20_3.fsp", "tai100_20_4.fsp",
-            "tai100_20_5.fsp", "tai100_20_6.fsp", "tai100_20_7.fsp", "tai100_20_8.fsp", "tai100_20_9.fsp"]
+problemNames = {"20": ["tai20_5_0.fsp", "tai20_5_1.fsp"
+        #     ,"tai20_5_2.fsp", "tai20_5_3.fsp", "tai20_5_4.fsp",
+        #    "tai20_5_5.fsp", "tai20_5_6.fsp", "tai20_5_7.fsp", "tai20_5_8.fsp", "tai20_5_9.fsp"
+            ,"tai20_10_0.fsp", "tai20_10_1.fsp" 
+        #    ,"tai20_10_2.fsp", "tai20_10_3.fsp", "tai20_10_4.fsp",
+        #    "tai20_10_5.fsp", "tai20_10_6.fsp", "tai20_10_7.fsp", "tai20_10_8.fsp", "tai20_10_9.fsp",
+            ,"tai20_20_0.fsp", "tai20_20_1.fsp"
+        #, "tai20_20_2.fsp", "tai20_20_3.fsp", "tai20_20_4.fsp",
+        #    "tai20_20_5.fsp", "tai20_20_6.fsp", "tai20_20_7.fsp", "tai20_20_8.fsp", "tai20_20_9.fsp"
+           ],
+           "50": ["tai50_5_0.fsp", "tai50_5_1.fsp"
+        #    , "tai50_5_2.fsp", "tai50_5_3.fsp", "tai50_5_4.fsp",
+        #    "tai50_5_5.fsp", "tai50_5_6.fsp", "tai50_5_7.fsp", "tai50_5_8.fsp", "tai50_5_9.fsp",
+        #    "tai50_10_0.fsp", "tai50_10_1.fsp", "tai50_10_2.fsp", "tai50_10_3.fsp", "tai50_10_4.fsp",
+        #    "tai50_10_5.fsp", "tai50_10_6.fsp", "tai50_10_7.fsp", "tai50_10_8.fsp", "tai50_10_9.fsp",
+        #    "tai50_20_0.fsp", "tai50_20_1.fsp", "tai50_20_2.fsp", "tai50_20_3.fsp", "tai50_20_4.fsp",
+        #    "tai50_20_5.fsp", "tai50_20_6.fsp", "tai50_20_7.fsp", "tai50_20_8.fsp", "tai50_20_9.fsp"
+           ],
+        #    "100": ["tai100_5_0.fsp", "tai100_5_1.fsp", "tai100_5_2.fsp", "tai100_5_3.fsp", "tai100_5_4.fsp",
+        #     "tai100_5_5.fsp", "tai100_5_6.fsp", "tai100_5_7.fsp", "tai100_5_8.fsp", "tai100_5_9.fsp",
+        #     "tai100_10_0.fsp", "tai100_10_1.fsp", "tai100_10_2.fsp", "tai100_10_3.fsp", "tai100_10_4.fsp",
+        #     "tai100_10_5.fsp", "tai100_10_6.fsp", "tai100_10_7.fsp", "tai100_10_8.fsp", "tai100_10_9.fsp",
+        #     "tai100_20_0.fsp", "tai100_20_1.fsp", "tai100_20_2.fsp", "tai100_20_3.fsp", "tai100_20_4.fsp",
+        #     "tai100_20_5.fsp", "tai100_20_6.fsp", "tai100_20_7.fsp", "tai100_20_8.fsp", "tai100_20_9.fsp"]
         #   , "200":["tai200_10_0.fsp", "tai200_10_1.fsp", "tai200_10_2.fsp", "tai200_10_3.fsp", "tai200_10_4.fsp",
         #     "tai200_10_5.fsp", "tai200_10_6.fsp", "tai200_10_7.fsp", "tai200_10_8.fsp", "tai200_10_9.fsp",
         #     "tai200_20_0.fsp", "tai200_20_1.fsp", "tai200_20_2.fsp", "tai200_20_3.fsp", "tai200_20_4.fsp",
@@ -41,7 +48,7 @@ problemNames = {"20": ["tai20_5_0.fsp", "tai20_5_1.fsp", "tai20_5_2.fsp", "tai20
 count = 0
 for problemSize in problemNames.keys():
     for probName in problemNames[problemSize]:
-        popSizes = [ int(problemSize) * 1, int(problemSize) * 2]
+        popSizes = [ int(problemSize) ]
         if ("tai20_5" in probName.replace("-", "_")):
             FEs = 182224100
         elif ("tai20_10" in  probName.replace("-", "_")):
@@ -67,9 +74,11 @@ for problemSize in problemNames.keys():
         elif("tai500_20" in probName.replace("-", "_")):
             FEs = 260316750
 
-
+        FEs = round(FEs * fe_frac)
         for populationSize in popSizes:
-            tSizes = [(round(int(populationSize) * 0.10)),(round(int(populationSize) * 0.25))]
+            # tSizes = [(round(int(populationSize) * 0.10)),(round(int(populationSize) * 0.25))]
+            tSizes = [(round(int(populationSize) * 0.10))]
+            
             for truncSize in tSizes:
                 for variance in stdevs:
                     for elitism in elit:
@@ -103,6 +112,8 @@ INDEX=$((SGE_TASK_ID-1))
 python RunRKEDA.py ${X_PARAM[$INDEX]}'''
 
 #print(parameters_to_print)
+
+print(parameters_to_print)
 
 text_file = open("./fsp.txt", "w")
 n = text_file.write(parameters_to_print)
